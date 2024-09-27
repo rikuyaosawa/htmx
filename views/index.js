@@ -5,7 +5,6 @@ const createHomepageTemplate = () => /*html*/ `
       <title>My Reading List</title>
       <script src="https://unpkg.com/htmx.org@1.9.12"></script>
       <link rel="stylesheet" href="/styles.css">
-      <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
     </head>
     <body>
       <header>
@@ -14,7 +13,7 @@ const createHomepageTemplate = () => /*html*/ `
 
       <main>
         <div class="book-list">
-          <!-- book list here later -->
+          <button hx-get="/books">Show Books</button>
         </div>
 
         <div class="add-book-form">
@@ -26,5 +25,9 @@ const createHomepageTemplate = () => /*html*/ `
   </html>
 `;
 
-export default createHomepageTemplate;
+const createBookDisplayBlock = () => /*html*/ `
+  <div>Hello, World</div>
+`;
 
+// TODO not done yet
+export default createBookDisplayBlock;

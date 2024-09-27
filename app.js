@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
   res.send(createHomepageTemplate());
 });
 
+app.get("/books", (req, res) => {
+  res.send(createBookDisplayBlock());
+});
+
 // listen to port
 app.listen(3000, () => {
   console.log("App listening on port 3000");
