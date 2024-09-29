@@ -25,9 +25,4 @@ const createHomepageTemplate = () => /*html*/ `
   </html>
 `;
 
-const createBookDisplayBlock = () => /*html*/ `
-  <div>Hello, World</div>
-`;
-
-// TODO not done yet
-export default createBookDisplayBlock;
+export default createHomepageTemplate;
