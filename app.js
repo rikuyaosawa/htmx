@@ -37,9 +37,18 @@ app.get("/books/:id", (req, res) => {
   const book = BOOKS_DATA.find((b) => b.id === id);
 
   // DEBUG
-  console.log("DEBUG LOG:", book);
+  console.log("DEBUG:", book);
 
   res.send(createBookTemplate(book));
+});
+
+app.delete("/books/:id", (req, res) => {
+  const id = req.params.id;
+  const index = BOOKS_DATA.findIndex((b) => b.id === id);
+  console.log("DEBUG: before deletion", BOOKS_DATA)
+  BOOKS_DATA.splice(index, 1)
+  console.log("DEBUG: after deletion", BOOKS_DATA)
+  res.send();
 });
 
 // listen to port
