@@ -22,18 +22,18 @@ app.get("/books", (req, res) => {
 });
 
 app.post("/books", (req, res) => {
-  const {title, author} = req.body;
+  const { title, author } = req.body;
   const id = (BOOKS_DATA.length + 1).toString();
   BOOKS_DATA.push({
     id: id,
     title: title,
-    author: author
-  })
+    author: author,
+  });
   res.redirect(`/books/${id}`);
 });
 
 app.get("/books/:id", (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   const book = BOOKS_DATA.find((b) => b.id === id);
 
   // DEBUG
@@ -45,9 +45,9 @@ app.get("/books/:id", (req, res) => {
 app.delete("/books/:id", (req, res) => {
   const id = req.params.id;
   const index = BOOKS_DATA.findIndex((b) => b.id === id);
-  console.log("DEBUG: before deletion", BOOKS_DATA)
-  BOOKS_DATA.splice(index, 1)
-  console.log("DEBUG: after deletion", BOOKS_DATA)
+  console.log("DEBUG: before deletion", BOOKS_DATA);
+  BOOKS_DATA.splice(index, 1);
+  console.log("DEBUG: after deletion", BOOKS_DATA);
   res.send();
 });
 
