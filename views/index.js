@@ -1,4 +1,4 @@
-const createHomepageTemplate = () => /*html*/ `
+const createHomepageTemplate = (book) => /*html*/ `
   <!DOCTYPE html>
   <html>
     <head>
