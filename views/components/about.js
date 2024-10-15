@@ -1,5 +1,5 @@
-const createAboutTempate = () => /*html*/ `
+const createAboutTemplate = () => /*html*/ `
     <h1>Hello from About page</h1>
 `;
 
-export default createAboutTempate;
+export default createAboutTemplate;
