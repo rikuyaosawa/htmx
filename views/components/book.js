@@ -1,8 +1,8 @@
 const createBookTemplate = (book) => /*html*/ `
-    <div>
+    <div hx-get="/book/${book.id}" hx-target="main">
         <ul>
             <li>Title: ${book.title}</li>
-            <li>Autho: ${book.author}</li>
+            <li>Author: ${book.author}</li>
         </ul>
     </div>
 `;
