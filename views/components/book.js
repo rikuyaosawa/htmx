@@ -1,5 +1,10 @@
-const createBookTemplate = () => /*html*/ `
-    <h1>Which book do you want to read?</h1>
+const createBookTemplate = (book) => /*html*/ `
+    <div>
+        <ul>
+            <li>Title: ${book.title}</li>
+            <li>Autho: ${book.author}</li>
+        </ul>
+    </div>
 `;
 
 export default createBookTemplate;
