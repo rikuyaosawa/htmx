@@ -24,7 +24,7 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.send(createAboutpageTemplate());
+  res.send(createAboutTemplate());
 });
 
 app.get("/book", (req, res) => {
