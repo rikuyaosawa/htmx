@@ -15,11 +15,13 @@ const BOOK_DATA = [
     id: 2,
     title: "Hello World",
     author: "Rikuya Osawa",
-    content: {
-      subheading: "",
-      pageNo: 1,
-      text: "Hello, world! This is Rikuya Osawa.",
-    },
+    content: [
+      {
+        subheading: "",
+        pageNo: 1,
+        text: "Hello, world! This is Rikuya Osawa.",
+      },
+    ],
   },
 ];
 
