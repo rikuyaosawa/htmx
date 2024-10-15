@@ -1,6 +1,8 @@
 import express from "express";
 import createMainTemplate from "./views/main.js";
 import createAboutpageTemplate from "./views/components/about.js";
+import createBookTemplate from "./views/components/book.js";
+import createQuoteTemplate from "./views/components/quote.js";
 
 // create app
 const app = express();
@@ -21,6 +23,14 @@ app.get("/home", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.send(createAboutpageTemplate());
+});
+
+app.get("/book", (req, res) => {
+  res.send(createBookTemplate());
+});
+
+app.get("/quote", (req, res) => {
+  res.send(createQuoteTemplate());
 });
 
 // listen to port
