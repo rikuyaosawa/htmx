@@ -1,7 +1,10 @@
-import createBookListTemplate from "../views/components/book-list.js";
-import BOOK_DATA from "../data/bookData.js";
-import createReadingTemplate from "../views/components/reading.js";
 import { Router } from "express";
+
+import BOOK_DATA from "../data/bookData.js";
+import {
+    createBookListTemplate,
+    createBookReadingTemplate,
+} from "../views/components/book.js";
 
 const router = Router();
 
@@ -14,7 +17,7 @@ router.get("/:id", (req, res) => {
     const book = BOOK_DATA.find((book) => book.id == id);
     const pageNo = 1;
     console.debug(`Debug: GET /book/${id}`);
-    res.send(createReadingTemplate(book, pageNo));
+    res.send(createBookReadingTemplate(book, pageNo));
 });
 
 router.get("/:id/:pageNo", (req, res) => {
@@ -37,7 +40,7 @@ router.get("/:id/:pageNo", (req, res) => {
         return;
     }
 
-    res.send(createReadingTemplate(book, pageNo));
+    res.send(createBookReadingTemplate(book, pageNo));
 });
 
 export default router;
