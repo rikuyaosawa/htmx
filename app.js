@@ -37,14 +37,25 @@ app.get("/quote", (req, res) => {
 
 app.get("/book/:id", (req, res) => {
   const id = req.params.id;
-  const index = 0;
-
-  // TODO: debug (delete later)
-  console.log(id);
   const book = BOOK_DATA.find((book) => book.id == id);
+  const index = 0;
+  console.debug("Debug: id =>", id);
+  res.send(createReadingTemplate(book, index));
+});
 
-  // TODO: debug (delete later)
-  console.log(book);
+app.get("/book/:id/:index", (req, res) => {
+  const id = req.params.id;
+  const book = BOOK_DATA.find((book) => book.id == id);
+  const index = parseInt(req.params.index) + 1;
+
+  console.debug("Debug: id =>", id);
+  console.debug("Debug: index =>", index);
+
+  if (book.content.length <= index) {
+    res.send("<h1>No page found.</h1>");
+    return;
+  }
+
   res.send(createReadingTemplate(book, index));
 });
 
