@@ -1,4 +1,4 @@
-import BOOK_DATA from "../../data/data.js";
+import BOOK_DATA from "../../data/bookData.js";
 import createBookTemplate from "./book.js";
 
 const createBookListTemplate = () => /*html*/ `

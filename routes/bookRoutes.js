@@ -1,5 +1,5 @@
 import createBookListTemplate from "../views/components/book-list.js";
-import BOOK_DATA from "../data/data.js";
+import BOOK_DATA from "../data/bookData.js";
 import createReadingTemplate from "../views/components/reading.js";
 import { Router } from "express";
 
