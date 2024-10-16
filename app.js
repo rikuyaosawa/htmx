@@ -16,50 +16,57 @@ app.use(express.static("public"));
 
 // routes
 app.get("/", (req, res) => {
-  res.redirect("/home");
+    res.redirect("/home");
 });
 
 app.get("/home", (req, res) => {
-  res.send(createMainTemplate());
+    res.send(createMainTemplate());
 });
 
 app.get("/about", (req, res) => {
-  res.send(createAboutTemplate());
+    res.send(createAboutTemplate());
 });
 
 app.get("/book", (req, res) => {
-  res.send(createBookListTemplate());
+    res.send(createBookListTemplate());
 });
 
 app.get("/quote", (req, res) => {
-  res.send(createQuoteListTemplate());
+    res.send(createQuoteListTemplate());
 });
 
 app.get("/book/:id", (req, res) => {
-  const id = req.params.id;
-  const book = BOOK_DATA.find((book) => book.id == id);
-  const index = 0;
-  console.debug("Debug: id =>", id);
-  res.send(createReadingTemplate(book, index));
+    const { id } = req.params;
+    const book = BOOK_DATA.find((book) => book.id == id);
+    const pageNo = 1;
+    console.debug(`Debug: GET /book/${id}`);
+    res.send(createReadingTemplate(book, pageNo));
 });
 
-app.get("/book/:id/:index", (req, res) => {
-  const id = req.params.id;
-  const book = BOOK_DATA.find((book) => book.id == id);
-  const index = parseInt(req.params.index) + 1;
+app.get("/book/:id/:pageNo", (req, res) => {
+    const { id } = req.params;
+    const { buttonType } = req.query;
+    const book = BOOK_DATA.find((book) => book.id == id);
 
-  console.debug("Debug: id =>", id);
-  console.debug("Debug: index =>", index);
+    let pageNo = parseInt(req.params.pageNo);
+    if (buttonType === "next") {
+        pageNo += 1;
+    } else if (buttonType === "back") {
+        pageNo -= 1;
+    }
 
-  if (book.content.length <= index) {
-    res.send("<h1>No page found.</h1>");
-    return;
-  }
+    console.debug(`Debug: GET /book/${id}/${pageNo}`);
 
-  res.send(createReadingTemplate(book, index));
+    if (pageNo > book.content.length) {
+        console.debug("No page found.");
+        res.send("<h1>No page found.</h1>");
+        return;
+    }
+
+    res.send(createReadingTemplate(book, pageNo));
 });
 
 // listen to port
 app.listen(3000, () => {
-  console.log("App listening on port 3000");
+    console.log("App listening on port 3000");
 });
